@@ -1,1 +1,0 @@
-chrome-extension://ifoakfbpdcdoeenechcleahebpibofpc/inject/index.js
