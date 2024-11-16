@@ -1,0 +1,6 @@
+{
+    "Host": "smtp.qq.com",
+    "Port": 465,
+    "Email": "SenderExample@qq.com",
+    "Password": "QQAuthorizationCode"
+}
