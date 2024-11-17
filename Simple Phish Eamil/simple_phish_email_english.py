@@ -67,7 +67,7 @@ if __name__ == '__main__':
             show_data(content_data)
         elif choose == 4:
             print("Sending...")
-            return_list = phish_email.send(1)
+            return_list = phish_email.send()    #Here can control the number of phish emails sent, the default is sent to all victims
             check_return_list_and_print(return_list)
             break
         elif choose == 0:
