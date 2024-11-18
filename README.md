@@ -4,7 +4,7 @@
 
 # English Version
 
-[Go To English README.md](https://github.com/DLTE1208/Simple-Phish-Email/blob/master/README_en.md)
+[Go To English README.md](https://github.com/DLTE1208/Simple-Phish-Email/blob/master/README (English).md)
 
 ## 标题1
 文本文本
