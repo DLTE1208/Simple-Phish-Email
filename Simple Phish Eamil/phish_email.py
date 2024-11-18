@@ -253,5 +253,4 @@ class PhishEmail:
                 ip = ip_list[0]
             else:
                 print('Get ip failed.')
-        print(f"IP: {ip}")
         return ip
