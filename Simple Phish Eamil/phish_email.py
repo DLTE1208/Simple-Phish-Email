@@ -239,7 +239,7 @@ class PhishEmail:
         #ip = '192.168.1.1'
         #*********************************************************************************************************************
 
-        if ip is not None:
+        if ip is None:
             #获取本机所有ipv4地址
             ip_list = []
             for address_info in all_address_info:
