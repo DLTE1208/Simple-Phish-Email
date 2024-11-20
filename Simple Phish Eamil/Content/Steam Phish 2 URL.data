@@ -1,7 +1,7 @@
 {
     "Content Type": "URL",
     "Disguised Name": "Steam",
-    "Subject": "测试URL钓鱼",
-    "URL Text": "点击链接跳转",
-    "Text": "这是一个测试，用于测试点击链接跳转网站：\n\t"
+    "Subject": "您的Steam账户已被从Steam家庭中移除",
+    "URL Text": "查看详细信息",
+    "Text": "您好！\n您的家庭成员已将您的Steam账户从Steam家庭中移除。\n\t\n如果这是一个错误，Steam家庭中的任何成年人都可以再次将您添加回去。\n祝你愉快，\nSteam团队"
 }
